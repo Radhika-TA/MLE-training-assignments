@@ -1,0 +1,896 @@
+Script started on 2023-07-18 12:08:32+05:30 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="120" LINES="30"]
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP[00m$ git --version
+git version 2.25.1
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP[00m$ git config --list
+[?1h=user.name=Radhika Mirani[m
+user.email=radhika.mirani@tigeranalytics.com[m
+core.editor=nano-w[m
+init.defaultbranch=main[m
+alias.unstage=reset HEAD --[m
+alias.last=log -1 HEAD[m
+[K[?1l>(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP[00m$ git config user.name
+Radhika Mirani
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP[00m$ git config -help
+usage: git config [<options>]
+
+Config file location
+    --global              use global config file
+    --system              use system config file
+    --local               use repository config file
+    --worktree            use per-worktree config file
+    -f, --file <file>     use given config file
+    --blob <blob-id>      read config from given blob object
+
+Action
+    --get                 get value: name [value-regex]
+    --get-all             get all values: key [value-regex]
+    --get-regexp          get values for regexp: name-regex [value-regex]
+    --get-urlmatch        get value specific for the URL: section[.var] URL
+    --replace-all         replace all matching variables: name value [value_regex]
+    --add                 add a new variable: name value
+    --unset               remove a variable: name [value-regex]
+    --unset-all           remove all matches: name [value-regex]
+    --rename-section      rename section: old-name new-name
+    --remove-section      remove a section: name
+    -l, --list            list all
+    -e, --edit            open an editor
+    --get-color           find the color configured: slot [default]
+    --get-colorbool       find the color setting: slot [stdout-is-tty]
+
+Type
+    -t, --type <>         value is given this type
+    --bool                value is "true" or "false"
+    --int                 value is decimal number
+    --bool-or-int         value is --bool or --int
+    --path                value is a path (file or directory name)
+    --expiry-date         value is an expiry date
+
+Other
+    -z, --null            terminate values with NUL byte
+    --name-only           show variable names only
+    --includes            respect include directives on lookup
+    --show-origin         show origin of config (file, standard input, blob, command line)
+    --default <value>     with --get, use default value when missing entry
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP[00m$ git help config
+[?1049h[22;0;0t[?1h=GIT-CONFIG(1)                                         Git Manual                                        GIT-CONFIG(1)[m
+[m
+[1mNAME[0m[m
+       git-config - Get and set repository or global options[m
+[m
+[1mSYNOPSIS[0m[m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--type=<type>] [--show-origin] [-z|--null] name [value [value_regex]][m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--type=<type>] --add name value[m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--type=<type>] --replace-all name value [value_regex][m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--type=<type>] [--show-origin] [-z|--null] --get name [value_regex][m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--type=<type>] [--show-origin] [-z|--null] --get-all name [value_regex][m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--type=<type>] [--show-origin] [-z|--null] [--name-only] --get-regexp name_regex [val[m ue_regex][m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--type=<type>] [-z|--null] --get-urlmatch name URL[m
+       [4mgit[24m [4mconfig[24m [<file-option>] --unset name [value_regex][m
+       [4mgit[24m [4mconfig[24m [<file-option>] --unset-all name [value_regex][m
+       [4mgit[24m [4mconfig[24m [<file-option>] --rename-section old_name new_name[m
+       [4mgit[24m [4mconfig[24m [<file-option>] --remove-section name[m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--show-origin] [-z|--null] [--name-only] -l | --list[m
+       [4mgit[24m [4mconfig[24m [<file-option>] --get-color name [default][m
+       [4mgit[24m [4mconfig[24m [<file-option>] --get-colorbool name [stdout-is-tty][m
+       [4mgit[24m [4mconfig[24m [<file-option>] -e | --edit[m
+[m
+[1mDESCRIPTION[0m[m
+       You can query/set/replace/unset options with this command. The name is actually the section and the key[m
+       separated by a dot, and the value will be escaped.[m
+[m
+       Multiple lines can be added to an option by using the [1m--add[0m option. If you want to update or unset an option[m
+       which can occur on multiple lines, a POSIX regexp [1mvalue_regex[0m needs to be given. Only the existing values that[m
+[7m Manual page git-config(1) line 1 (press h for help or q to quit)[27m[K[K[?1l>[?1049l[23;0;0t(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP[00m$ ls
+[0m[34;42m'ASSIGNMENT 1'[0m   [01;32mgit_session[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP[00m$ mkdir Git_lesses[Ko[K[Kon
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP[00m$ ls
+[0m[34;42m'ASSIGNMENT 1'[0m   [34;42mGit_lesson[0m   [01;32mgit_session[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP[00m$ d[Kcd Git_lesson/
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson[00m$ k[Kmkdir my_git_repo
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson[00m$ cd my_git_repo/
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git init
+Initialized empty Git repository in /mnt/d/TAMLEP/Git_lesson/my_git_repo/.git/
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ ls
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ ls -a
+[0m[34;42m.[0m  [34;42m..[0m  [34;42m.git[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git add *.c
+fatal: pathspec '*.c' did not match any files
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git add[K[K[K[K[K[K[Knano my_first [K_file
+[?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;55H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 4.8                                         my_first_file                                                    [1;119H(B[m[29d(B[0;7m^G(B[m Get Help    (B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut Text    (B[0;7m^J(B[m Justify     (B[0;7m^C(B[m Cur Pos     (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Mark Text[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste Text  (B[0;7m^T(B[m To Spell    (B[0;7m^_(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy Text[28d[2d[39;49m(B[m[?12l[?25h[?25l[1;111H(B[0;7mModified(B[m[2dT[?12l[?25h[?25li[?12l[?25h[?25l [?12l[?25h[?25lh[?12l[?25h[?25li[?12l[?25h[?25ls[?12l[?25h[?25l [?12l[?25h[?25li[?12l[?25h[?25ls[?12l[?25h[?25l [?12l[?25h[?25lm[?12l[?25h[?25ly[?12l[?25h[?25l [?12l[?25h[?25lf[?12l[?25h[?25li[?12l[?25h[?25lr[?12l[?25h[?25ls[?12l[?25h[?25lt[?12l[?25h[?25l [?12l[?25h[?25ld[?12l[?25h[?25lu[?12l[?25h[?25lm[?12l[?25h[?25lm[?12l[?25h[?25ly[?12l[?25h[?25l [?12l[?25h[?25lf[28d[K[2;25H[?12l[?25h[?25li[?12l[?25h[?25ll[?12l[?25h[?25le[?12l[?25h[?25l [?12l[?25h[?25lt[?12l[?25h[?25la[?12l[?25h[?25l [?12l[?25h[?25lh[?12l[?25h[?25la[?12l[?25h[?25lt[?12l[?25h[?25l [?12l[?25h[?25lI[?12l[?25h[?25l [?12l[?25h[?25lw[?12l[?25h[?25la[?12l[?25h[?25ln[?12l[?25h[?25lt[?12l[?25h[?25l [?12l[?25h[?25lt[?12l[?25h[?25lo[?12l[?25h[?25l [?12l[?25h[?25lc[?12l[?25h[?25lo[?12l[?25h[?25lm[?12l[?25h[?25lm[?12l[?25h[?25li[?12l[?25h[?25lt[?12l[?25h[?25l[29;16H[15X[29;31H(B[0;7mM-D(B[m DOS Format[16X[29;61H(B[0;7mM-A(B[m Append[15X[29;93H(B[0;7mB(B[m Backup File[K[30;2H(B[0;7mC(B[m Cancel[16G[15X[30;31H(B[0;7mM-M(B[m Mac Format[16X[30;61H(B[0;7mM-P(B[m Prepend[19X[30;91H(B[0;7m^T(B[m To Files[K[28d(B[0;7mFile Name to Write: my_first_file                                                                                       [28;1H(B[m[28;34H[?12l[?25h[?25l[28;53H[1K (B[0;7m[ Writing... ](B[m[K[1;111H(B[0;7m        (B[m[28;53H(B[0;7m[ Wrote 1 line ](B[m[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut Text    (B[0;7m^J(B[m Justify     (B[0;7m^C(B[m Cur Pos[93G(B[0;7mU(B[m Undo       (B[0;7mM-A(B[m Mark Text[30;2H(B[0;7mX(B[m Exit  [16G(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste Text  (B[0;7m^T(B[m To Spell    (B[0;7m^_(B[m Go To Line  (B[0;7mM-E(B[m Redo       (B[0;7mM-6(B[m Copy Text[28d[2;50H[?12l[?25h[?25l[28d[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git add my_first_file 
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git add LICENSE
+fatal: pathspec 'LICENSE' did not match any files
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git commit -m 'Initial Projc[Kect v[KVeri[Ksion'
+[master (root-commit) a0d23cc] Initial Project Version
+ 1 file changed, 1 insertion(+)
+ create mode 100644 my_first_file
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git clone https://github.com/libgit2/libgit2
+Cloning into 'libgit2'...
+remote: Enumerating objects: 123696, done.[K
+remote: Counting objects:   0% (1/123696)[Kremote: Counting objects:   1% (1237/123696)[Kremote: Counting objects:   2% (2474/123696)[Kremote: Counting objects:   3% (3711/123696)[Kremote: Counting objects:   4% (4948/123696)[Kremote: Counting objects:   5% (6185/123696)[Kremote: Counting objects:   6% (7422/123696)[Kremote: Counting objects:   7% (8659/123696)[Kremote: Counting objects:   8% (9896/123696)[Kremote: Counting objects:   9% (11133/123696)[Kremote: Counting objects:  10% (12370/123696)[Kremote: Counting objects:  11% (13607/123696)[Kremote: Counting objects:  12% (14844/123696)[Kremote: Counting objects:  13% (16081/123696)[Kremote: Counting objects:  14% (17318/123696)[Kremote: Counting objects:  15% (18555/123696)[Kremote: Counting objects:  16% (19792/123696)[Kremote: Counting objects:  17% (21029/123696)[Kremote: Counting objects:  18% (22266/123696)[Kremote: Counting objects:  19% (23503/123696)[Kremote: Counting objects:  20% (24740/123696)[Kremote: Counting objects:  21% (25977/123696)[Kremote: Counting objects:  22% (27214/123696)[Kremote: Counting objects:  23% (28451/123696)[Kremote: Counting objects:  24% (29688/123696)[Kremote: Counting objects:  25% (30924/123696)[Kremote: Counting objects:  26% (32161/123696)[Kremote: Counting objects:  27% (33398/123696)[Kremote: Counting objects:  28% (34635/123696)[Kremote: Counting objects:  29% (35872/123696)[Kremote: Counting objects:  30% (37109/123696)[Kremote: Counting objects:  31% (38346/123696)[Kremote: Counting objects:  32% (39583/123696)[Kremote: Counting objects:  33% (40820/123696)[Kremote: Counting objects:  34% (42057/123696)[Kremote: Counting objects:  35% (43294/123696)[Kremote: Counting objects:  36% (44531/123696)[Kremote: Counting objects:  37% (45768/123696)[Kremote: Counting objects:  38% (47005/123696)[Kremote: Counting objects:  39% (48242/123696)[Kremote: Counting objects:  40% (49479/123696)[Kremote: Counting objects:  41% (50716/123696)[Kremote: Counting objects:  42% (51953/123696)[Kremote: Counting objects:  43% (53190/123696)[Kremote: Counting objects:  44% (54427/123696)[Kremote: Counting objects:  45% (55664/123696)[Kremote: Counting objects:  46% (56901/123696)[Kremote: Counting objects:  47% (58138/123696)[Kremote: Counting objects:  48% (59375/123696)[Kremote: Counting objects:  49% (60612/123696)[Kremote: Counting objects:  50% (61848/123696)[Kremote: Counting objects:  51% (63085/123696)[Kremote: Counting objects:  52% (64322/123696)[Kremote: Counting objects:  53% (65559/123696)[Kremote: Counting objects:  54% (66796/123696)[Kremote: Counting objects:  55% (68033/123696)[Kremote: Counting objects:  56% (69270/123696)[Kremote: Counting objects:  57% (70507/123696)[Kremote: Counting objects:  58% (71744/123696)[Kremote: Counting objects:  59% (72981/123696)[Kremote: Counting objects:  60% (74218/123696)[Kremote: Counting objects:  61% (75455/123696)[Kremote: Counting objects:  62% (76692/123696)[Kremote: Counting objects:  63% (77929/123696)[Kremote: Counting objects:  64% (79166/123696)[Kremote: Counting objects:  65% (80403/123696)[Kremote: Counting objects:  66% (81640/123696)[Kremote: Counting objects:  67% (82877/123696)[Kremote: Counting objects:  68% (84114/123696)[Kremote: Counting objects:  69% (85351/123696)[Kremote: Counting objects:  70% (86588/123696)[Kremote: Counting objects:  71% (87825/123696)[Kremote: Counting objects:  72% (89062/123696)[Kremote: Counting objects:  73% (90299/123696)[Kremote: Counting objects:  74% (91536/123696)[Kremote: Counting objects:  75% (92772/123696)[Kremote: Counting objects:  76% (94009/123696)[Kremote: Counting objects:  77% (95246/123696)[Kremote: Counting objects:  78% (96483/123696)[Kremote: Counting objects:  79% (97720/123696)[Kremote: Counting objects:  80% (98957/123696)[Kremote: Counting objects:  81% (100194/123696)[Kremote: Counting objects:  82% (101431/123696)[Kremote: Counting objects:  83% (102668/123696)[Kremote: Counting objects:  84% (103905/123696)[Kremote: Counting objects:  85% (105142/123696)[Kremote: Counting objects:  86% (106379/123696)[Kremote: Counting objects:  87% (107616/123696)[Kremote: Counting objects:  88% (108853/123696)[Kremote: Counting objects:  89% (110090/123696)[Kremote: Counting objects:  90% (111327/123696)[Kremote: Counting objects:  91% (112564/123696)[Kremote: Counting objects:  92% (113801/123696)[Kremote: Counting objects:  93% (115038/123696)[Kremote: Counting objects:  94% (116275/123696)[Kremote: Counting objects:  95% (117512/123696)[Kremote: Counting objects:  96% (118749/123696)[Kremote: Counting objects:  97% (119986/123696)[Kremote: Counting objects:  98% (121223/123696)[Kremote: Counting objects:  99% (122460/123696)[Kremote: Counting objects: 100% (123696/123696)[Kremote: Counting objects: 100% (123696/123696), done.[K
+remote: Compressing objects:   0% (1/34197)[Kremote: Compressing objects:   1% (342/34197)[Kremote: Compressing objects:   2% (684/34197)[Kremote: Compressing objects:   3% (1026/34197)[Kremote: Compressing objects:   4% (1368/34197)[Kremote: Compressing objects:   5% (1710/34197)[Kremote: Compressing objects:   6% (2052/34197)[Kremote: Compressing objects:   7% (2394/34197)[Kremote: Compressing objects:   8% (2736/34197)[Kremote: Compressing objects:   9% (3078/34197)[Kremote: Compressing objects:  10% (3420/34197)[Kremote: Compressing objects:  11% (3762/34197)[Kremote: Compressing objects:  12% (4104/34197)[Kremote: Compressing objects:  13% (4446/34197)[Kremote: Compressing objects:  14% (4788/34197)[Kremote: Compressing objects:  15% (5130/34197)[Kremote: Compressing objects:  16% (5472/34197)[Kremote: Compressing objects:  17% (5814/34197)[Kremote: Compressing objects:  18% (6156/34197)[Kremote: Compressing objects:  19% (6498/34197)[Kremote: Compressing objects:  20% (6840/34197)[Kremote: Compressing objects:  21% (7182/34197)[Kremote: Compressing objects:  22% (7524/34197)[Kremote: Compressing objects:  23% (7866/34197)[Kremote: Compressing objects:  24% (8208/34197)[Kremote: Compressing objects:  25% (8550/34197)[Kremote: Compressing objects:  26% (8892/34197)[Kremote: Compressing objects:  27% (9234/34197)[Kremote: Compressing objects:  28% (9576/34197)[Kremote: Compressing objects:  29% (9918/34197)[Kremote: Compressing objects:  30% (10260/34197)[Kremote: Compressing objects:  31% (10602/34197)[Kremote: Compressing objects:  32% (10944/34197)[Kremote: Compressing objects:  33% (11286/34197)[Kremote: Compressing objects:  34% (11627/34197)[Kremote: Compressing objects:  35% (11969/34197)[Kremote: Compressing objects:  36% (12311/34197)[Kremote: Compressing objects:  37% (12653/34197)[Kremote: Compressing objects:  38% (12995/34197)[Kremote: Compressing objects:  39% (13337/34197)[Kremote: Compressing objects:  40% (13679/34197)[Kremote: Compressing objects:  41% (14021/34197)[Kremote: Compressing objects:  42% (14363/34197)[Kremote: Compressing objects:  43% (14705/34197)[Kremote: Compressing objects:  44% (15047/34197)[Kremote: Compressing objects:  45% (15389/34197)[Kremote: Compressing objects:  46% (15731/34197)[Kremote: Compressing objects:  47% (16073/34197)[Kremote: Compressing objects:  48% (16415/34197)[Kremote: Compressing objects:  49% (16757/34197)[Kremote: Compressing objects:  50% (17099/34197)[Kremote: Compressing objects:  51% (17441/34197)[Kremote: Compressing objects:  52% (17783/34197)[Kremote: Compressing objects:  53% (18125/34197)[Kremote: Compressing objects:  54% (18467/34197)[Kremote: Compressing objects:  55% (18809/34197)[Kremote: Compressing objects:  56% (19151/34197)[Kremote: Compressing objects:  57% (19493/34197)[Kremote: Compressing objects:  58% (19835/34197)[Kremote: Compressing objects:  59% (20177/34197)[Kremote: Compressing objects:  60% (20519/34197)[Kremote: Compressing objects:  61% (20861/34197)[Kremote: Compressing objects:  62% (21203/34197)[Kremote: Compressing objects:  63% (21545/34197)[Kremote: Compressing objects:  64% (21887/34197)[Kremote: Compressing objects:  65% (22229/34197)[Kremote: Compressing objects:  66% (22571/34197)[Kremote: Compressing objects:  67% (22912/34197)[Kremote: Compressing objects:  68% (23254/34197)[Kremote: Compressing objects:  69% (23596/34197)[Kremote: Compressing objects:  70% (23938/34197)[Kremote: Compressing objects:  71% (24280/34197)[Kremote: Compressing objects:  72% (24622/34197)[Kremote: Compressing objects:  73% (24964/34197)[Kremote: Compressing objects:  74% (25306/34197)[Kremote: Compressing objects:  75% (25648/34197)[Kremote: Compressing objects:  76% (25990/34197)[Kremote: Compressing objects:  77% (26332/34197)[Kremote: Compressing objects:  78% (26674/34197)[Kremote: Compressing objects:  79% (27016/34197)[Kremote: Compressing objects:  80% (27358/34197)[Kremote: Compressing objects:  81% (27700/34197)[Kremote: Compressing objects:  82% (28042/34197)[Kremote: Compressing objects:  83% (28384/34197)[Kremote: Compressing objects:  84% (28726/34197)[Kremote: Compressing objects:  85% (29068/34197)[Kremote: Compressing objects:  86% (29410/34197)[Kremote: Compressing objects:  87% (29752/34197)[Kremote: Compressing objects:  88% (30094/34197)[Kremote: Compressing objects:  89% (30436/34197)[Kremote: Compressing objects:  90% (30778/34197)[Kremote: Compressing objects:  91% (31120/34197)[Kremote: Compressing objects:  92% (31462/34197)[Kremote: Compressing objects:  93% (31804/34197)[Kremote: Compressing objects:  94% (32146/34197)[Kremote: Compressing objects:  95% (32488/34197)[Kremote: Compressing objects:  96% (32830/34197)[Kremote: Compressing objects:  97% (33172/34197)[Kremote: Compressing objects:  98% (33514/34197)[Kremote: Compressing objects:  99% (33856/34197)[Kremote: Compressing objects: 100% (34197/34197)[Kremote: Compressing objects: 100% (34197/34197), done.[K
+Receiving objects:   0% (1/123696)Receiving objects:   1% (1237/123696)Receiving objects:   2% (2474/123696)Receiving objects:   3% (3711/123696), 892.00 KiB | 1.66 MiB/sReceiving objects:   4% (4948/123696), 892.00 KiB | 1.66 MiB/sReceiving objects:   4% (5308/123696), 1.78 MiB | 1.70 MiB/s  Receiving objects:   5% (6185/123696), 1.78 MiB | 1.70 MiB/sReceiving objects:   6% (7422/123696), 1.78 MiB | 1.70 MiB/sReceiving objects:   7% (8659/123696), 1.78 MiB | 1.70 MiB/sReceiving objects:   8% (9896/123696), 1.78 MiB | 1.70 MiB/sReceiving objects:   9% (11133/123696), 3.15 MiB | 2.03 MiB/sReceiving objects:  10% (12370/123696), 3.15 MiB | 2.03 MiB/sReceiving objects:  11% (13607/123696), 3.15 MiB | 2.03 MiB/sReceiving objects:  11% (14793/123696), 3.15 MiB | 2.03 MiB/sReceiving objects:  12% (14844/123696), 3.15 MiB | 2.03 MiB/sReceiving objects:  13% (16081/123696), 4.32 MiB | 2.01 MiB/sReceiving objects:  14% (17318/123696), 4.32 MiB | 2.01 MiB/sReceiving objects:  15% (18555/123696), 4.83 MiB | 1.82 MiB/sReceiving objects:  16% (19792/123696), 4.83 MiB | 1.82 MiB/sReceiving objects:  16% (20709/123696), 4.83 MiB | 1.82 MiB/sReceiving objects:  17% (21029/123696), 4.83 MiB | 1.82 MiB/sReceiving objects:  18% (22266/123696), 5.68 MiB | 1.80 MiB/sReceiving objects:  19% (23503/123696), 5.68 MiB | 1.80 MiB/sReceiving objects:  20% (24740/123696), 6.52 MiB | 1.75 MiB/sReceiving objects:  21% (25977/123696), 6.52 MiB | 1.75 MiB/sReceiving objects:  21% (26276/123696), 6.52 MiB | 1.75 MiB/sReceiving objects:  22% (27214/123696), 6.52 MiB | 1.75 MiB/sReceiving objects:  22% (27729/123696), 7.27 MiB | 1.45 MiB/sReceiving objects:  22% (28265/123696), 7.93 MiB | 1.40 MiB/sReceiving objects:  22% (28321/123696), 9.93 MiB | 1.14 MiB/sReceiving objects:  22% (28366/123696), 10.77 MiB | 1.14 MiB/sReceiving objects:  23% (28451/123696), 10.77 MiB | 1.14 MiB/sReceiving objects:  23% (28691/123696), 12.43 MiB | 1.15 MiB/sReceiving objects:  23% (28992/123696), 13.79 MiB | 1.33 MiB/sReceiving objects:  23% (29013/123696), 14.00 MiB | 1.20 MiB/sReceiving objects:  23% (29142/123696), 15.17 MiB | 1.16 MiB/sReceiving objects:  24% (29688/123696), 16.94 MiB | 1.21 MiB/sReceiving objects:  24% (29978/123696), 16.94 MiB | 1.21 MiB/sReceiving objects:  25% (30924/123696), 17.62 MiB | 1.17 MiB/sReceiving objects:  25% (31083/123696), 17.91 MiB | 1.07 MiB/sReceiving objects:  25% (32085/123696), 19.07 MiB | 1.04 MiB/sReceiving objects:  26% (32161/123696), 19.07 MiB | 1.04 MiB/sReceiving objects:  26% (32732/123696), 20.15 MiB | 1.15 MiB/sReceiving objects:  27% (33398/123696), 20.15 MiB | 1.15 MiB/sReceiving objects:  27% (34560/123696), 21.00 MiB | 1.16 MiB/sReceiving objects:  28% (34635/123696), 21.00 MiB | 1.16 MiB/sReceiving objects:  28% (35573/123696), 22.18 MiB | 1.10 MiB/sReceiving objects:  29% (35872/123696), 23.22 MiB | 1.08 MiB/sReceiving objects:  29% (35884/123696), 23.22 MiB | 1.08 MiB/sReceiving objects:  29% (36002/123696), 23.57 MiB | 1.02 MiB/sReceiving objects:  30% (37109/123696), 23.82 MiB | 922.00 KiB/sReceiving objects:  30% (37212/123696), 24.21 MiB | 864.00 KiB/sReceiving objects:  30% (37382/123696), 24.45 MiB | 772.00 KiB/sReceiving objects:  31% (38346/123696), 24.96 MiB | 712.00 KiB/sReceiving objects:  31% (39546/123696), 25.46 MiB | 707.00 KiB/sReceiving objects:  32% (39583/123696), 25.46 MiB | 707.00 KiB/sReceiving objects:  33% (40820/123696), 26.07 MiB | 699.00 KiB/sReceiving objects:  34% (42057/123696), 26.70 MiB | 740.00 KiB/sReceiving objects:  34% (42325/123696), 26.70 MiB | 740.00 KiB/sReceiving objects:  35% (43294/123696), 27.64 MiB | 812.00 KiB/sReceiving objects:  35% (44078/123696), 28.46 MiB | 893.00 KiB/sReceiving objects:  36% (44531/123696), 28.46 MiB | 893.00 KiB/sReceiving objects:  36% (45254/123696), 29.26 MiB | 1009.00 KiB/sReceiving objects:  37% (45768/123696), 29.26 MiB | 1009.00 KiB/sReceiving objects:  38% (47005/123696), 30.35 MiB | 1.19 MiB/s   Receiving objects:  38% (47314/123696), 30.35 MiB | 1.19 MiB/sReceiving objects:  39% (48242/123696), 30.35 MiB | 1.19 MiB/sReceiving objects:  40% (49479/123696), 31.28 MiB | 1.27 MiB/sReceiving objects:  40% (50597/123696), 32.05 MiB | 1.33 MiB/sReceiving objects:  41% (50716/123696), 32.05 MiB | 1.33 MiB/sReceiving objects:  42% (51953/123696), 32.05 MiB | 1.33 MiB/sReceiving objects:  43% (53190/123696), 33.11 MiB | 1.42 MiB/sReceiving objects:  44% (54427/123696), 33.11 MiB | 1.42 MiB/sReceiving objects:  44% (54626/123696), 34.11 MiB | 1.50 MiB/sReceiving objects:  45% (55664/123696), 35.10 MiB | 1.50 MiB/sReceiving objects:  45% (56278/123696), 36.00 MiB | 1.61 MiB/sReceiving objects:  46% (56901/123696), 37.23 MiB | 1.72 MiB/sReceiving objects:  47% (58138/123696), 37.23 MiB | 1.72 MiB/sReceiving objects:  48% (59375/123696), 37.23 MiB | 1.72 MiB/sReceiving objects:  49% (60612/123696), 38.61 MiB | 1.81 MiB/sReceiving objects:  49% (60638/123696), 38.61 MiB | 1.81 MiB/sReceiving objects:  50% (61848/123696), 38.61 MiB | 1.81 MiB/sReceiving objects:  51% (63085/123696), 38.61 MiB | 1.81 MiB/sReceiving objects:  52% (64322/123696), 38.61 MiB | 1.81 MiB/sReceiving objects:  53% (65559/123696), 39.99 MiB | 2.10 MiB/sReceiving objects:  54% (66796/123696), 39.99 MiB | 2.10 MiB/sReceiving objects:  55% (68033/123696), 39.99 MiB | 2.10 MiB/sReceiving objects:  56% (69270/123696), 39.99 MiB | 2.10 MiB/sReceiving objects:  57% (70507/123696), 41.36 MiB | 2.20 MiB/sReceiving objects:  57% (70589/123696), 41.36 MiB | 2.20 MiB/sReceiving objects:  58% (71744/123696), 41.36 MiB | 2.20 MiB/sReceiving objects:  59% (72981/123696), 41.36 MiB | 2.20 MiB/sReceiving objects:  60% (74218/123696), 41.36 MiB | 2.20 MiB/sReceiving objects:  61% (75455/123696), 42.86 MiB | 2.31 MiB/sReceiving objects:  62% (76692/123696), 42.86 MiB | 2.31 MiB/sReceiving objects:  63% (77929/123696), 42.86 MiB | 2.31 MiB/sReceiving objects:  63% (78616/123696), 42.86 MiB | 2.31 MiB/sReceiving objects:  63% (78668/123696), 45.44 MiB | 2.20 MiB/sReceiving objects:  63% (78720/123696), 46.04 MiB | 2.15 MiB/sReceiving objects:  63% (78728/123696), 46.46 MiB | 1.62 MiB/sReceiving objects:  63% (78743/123696), 48.10 MiB | 1.38 MiB/sReceiving objects:  63% (78759/123696), 49.04 MiB | 1.04 MiB/sReceiving objects:  63% (78926/123696), 49.88 MiB | 987.00 KiB/sReceiving objects:  64% (79166/123696), 50.68 MiB | 1.03 MiB/s  Receiving objects:  65% (80403/123696), 50.68 MiB | 1.03 MiB/sReceiving objects:  66% (81640/123696), 50.68 MiB | 1.03 MiB/sReceiving objects:  66% (82272/123696), 51.86 MiB | 1.05 MiB/sReceiving objects:  67% (82877/123696), 51.86 MiB | 1.05 MiB/sReceiving objects:  68% (84114/123696), 51.86 MiB | 1.05 MiB/sReceiving objects:  68% (85250/123696), 52.65 MiB | 1.23 MiB/sReceiving objects:  69% (85351/123696), 52.65 MiB | 1.23 MiB/sReceiving objects:  70% (86588/123696), 53.37 MiB | 1.20 MiB/sReceiving objects:  70% (87547/123696), 54.11 MiB | 1.17 MiB/sReceiving objects:  71% (87825/123696), 54.11 MiB | 1.17 MiB/sReceiving objects:  72% (89062/123696), 55.11 MiB | 1.23 MiB/sReceiving objects:  73% (90299/123696), 55.11 MiB | 1.23 MiB/sReceiving objects:  73% (91193/123696), 56.11 MiB | 1.36 MiB/sReceiving objects:  74% (91536/123696), 56.11 MiB | 1.36 MiB/sReceiving objects:  75% (92772/123696), 56.11 MiB | 1.36 MiB/sReceiving objects:  76% (94009/123696), 57.18 MiB | 1.49 MiB/sReceiving objects:  77% (95246/123696), 57.18 MiB | 1.49 MiB/sReceiving objects:  78% (96483/123696), 57.18 MiB | 1.49 MiB/sReceiving objects:  79% (97720/123696), 57.18 MiB | 1.49 MiB/sReceiving objects:  79% (98222/123696), 57.18 MiB | 1.49 MiB/sReceiving objects:  80% (98957/123696), 58.34 MiB | 1.56 MiB/sReceiving objects:  81% (100194/123696), 58.34 MiB | 1.56 MiB/sReceiving objects:  82% (101431/123696), 58.34 MiB | 1.56 MiB/sReceiving objects:  83% (102668/123696), 58.34 MiB | 1.56 MiB/sReceiving objects:  84% (103905/123696), 59.55 MiB | 1.66 MiB/sReceiving objects:  85% (105142/123696), 59.55 MiB | 1.66 MiB/sReceiving objects:  86% (106379/123696), 59.55 MiB | 1.66 MiB/sReceiving objects:  86% (107497/123696), 59.55 MiB | 1.66 MiB/sReceiving objects:  87% (107616/123696), 59.55 MiB | 1.66 MiB/sReceiving objects:  88% (108853/123696), 60.82 MiB | 1.87 MiB/sReceiving objects:  89% (110090/123696), 60.82 MiB | 1.87 MiB/sReceiving objects:  90% (111327/123696), 60.82 MiB | 1.87 MiB/sReceiving objects:  91% (112564/123696), 61.77 MiB | 1.87 MiB/sReceiving objects:  92% (113801/123696), 61.77 MiB | 1.87 MiB/sReceiving objects:  93% (115038/123696), 61.77 MiB | 1.87 MiB/sReceiving objects:  93% (115981/123696), 61.77 MiB | 1.87 MiB/sReceiving objects:  94% (116275/123696), 61.77 MiB | 1.87 MiB/sReceiving objects:  95% (117512/123696), 61.77 MiB | 1.87 MiB/sReceiving objects:  96% (118749/123696), 62.98 MiB | 2.01 MiB/sReceiving objects:  97% (119986/123696), 62.98 MiB | 2.01 MiB/sReceiving objects:  98% (121223/123696), 62.98 MiB | 2.01 MiB/sReceiving objects:  99% (122460/123696), 62.98 MiB | 2.01 MiB/sremote: Total 123696 (delta 88036), reused 123020 (delta 87452), pack-reused 0[K
+Receiving objects: 100% (123696/123696), 64.36 MiB | 2.17 MiB/sReceiving objects: 100% (123696/123696), 64.61 MiB | 1.38 MiB/s, done.
+Resolving deltas:   0% (0/88036)Resolving deltas:   1% (885/88036)Resolving deltas:   2% (1802/88036)Resolving deltas:   3% (2646/88036)Resolving deltas:   4% (3539/88036)Resolving deltas:   5% (4420/88036)Resolving deltas:   6% (5288/88036)Resolving deltas:   7% (6213/88036)Resolving deltas:   8% (7115/88036)Resolving deltas:   9% (7959/88036)Resolving deltas:  10% (8857/88036)Resolving deltas:  11% (9789/88036)Resolving deltas:  12% (10778/88036)Resolving deltas:  13% (11472/88036)Resolving deltas:  14% (12328/88036)Resolving deltas:  15% (13217/88036)Resolving deltas:  16% (14097/88036)Resolving deltas:  17% (15041/88036)Resolving deltas:  18% (15860/88036)Resolving deltas:  19% (17207/88036)Resolving deltas:  20% (17919/88036)Resolving deltas:  21% (18540/88036)Resolving deltas:  22% (19443/88036)Resolving deltas:  23% (20250/88036)Resolving deltas:  24% (21189/88036)Resolving deltas:  25% (22176/88036)Resolving deltas:  26% (22912/88036)Resolving deltas:  27% (23781/88036)Resolving deltas:  28% (24674/88036)Resolving deltas:  29% (25552/88036)Resolving deltas:  30% (26414/88036)Resolving deltas:  31% (27360/88036)Resolving deltas:  32% (28229/88036)Resolving deltas:  33% (29055/88036)Resolving deltas:  34% (29944/88036)Resolving deltas:  34% (30573/88036)Resolving deltas:  35% (30815/88036)Resolving deltas:  36% (31693/88036)Resolving deltas:  37% (32578/88036)Resolving deltas:  38% (33470/88036)Resolving deltas:  39% (34390/88036)Resolving deltas:  40% (35498/88036)Resolving deltas:  41% (36123/88036)Resolving deltas:  42% (37014/88036)Resolving deltas:  43% (37860/88036)Resolving deltas:  44% (38746/88036)Resolving deltas:  45% (39803/88036)Resolving deltas:  46% (40763/88036)Resolving deltas:  47% (41417/88036)Resolving deltas:  48% (42273/88036)Resolving deltas:  49% (43166/88036)Resolving deltas:  50% (44025/88036)Resolving deltas:  51% (44954/88036)Resolving deltas:  52% (46050/88036)Resolving deltas:  58% (51939/88036)Resolving deltas:  59% (51942/88036)Resolving deltas:  60% (52826/88036)Resolving deltas:  61% (53711/88036)Resolving deltas:  62% (54612/88036)Resolving deltas:  63% (55469/88036)Resolving deltas:  63% (55729/88036)Resolving deltas:  64% (56380/88036)Resolving deltas:  65% (57230/88036)Resolving deltas:  66% (58200/88036)Resolving deltas:  67% (59019/88036)Resolving deltas:  68% (59906/88036)Resolving deltas:  69% (60748/88036)Resolving deltas:  70% (61630/88036)Resolving deltas:  71% (62550/88036)Resolving deltas:  72% (63394/88036)Resolving deltas:  73% (64268/88036)Resolving deltas:  74% (65151/88036)Resolving deltas:  75% (66031/88036)Resolving deltas:  76% (66918/88036)Resolving deltas:  76% (67154/88036)Resolving deltas:  77% (67813/88036)Resolving deltas:  78% (68686/88036)Resolving deltas:  79% (70255/88036)Resolving deltas:  80% (70429/88036)Resolving deltas:  81% (71342/88036)Resolving deltas:  82% (72191/88036)Resolving deltas:  83% (73271/88036)Resolving deltas:  83% (73770/88036)Resolving deltas:  84% (74009/88036)Resolving deltas:  85% (74858/88036)Resolving deltas:  86% (75873/88036)Resolving deltas:  86% (76454/88036)Resolving deltas:  87% (76611/88036)Resolving deltas:  88% (77480/88036)Resolving deltas:  89% (78426/88036)Resolving deltas:  90% (79276/88036)Resolving deltas:  91% (80129/88036)Resolving deltas:  92% (80994/88036)Resolving deltas:  93% (81884/88036)Resolving deltas:  93% (82078/88036)Resolving deltas:  94% (82755/88036)Resolving deltas:  95% (83636/88036)Resolving deltas:  96% (84520/88036)Resolving deltas:  97% (85408/88036)Resolving deltas:  98% (86369/88036)Resolving deltas:  99% (87157/88036)Resolving deltas: 100% (88036/88036)Resolving deltas: 100% (88036/88036), done.
+Updating files:   0% (77/11792)Updating files:   1% (118/11792)Updating files:   1% (182/11792)Updating files:   2% (236/11792)Updating files:   2% (317/11792)Updating files:   3% (354/11792)Updating files:   3% (440/11792)Updating files:   4% (472/11792)Updating files:   5% (590/11792)Updating files:   5% (595/11792)Updating files:   6% (708/11792)Updating files:   6% (734/11792)Updating files:   7% (826/11792)Updating files:   7% (873/11792)Updating files:   8% (944/11792)Updating files:   8% (1054/11792)Updating files:   9% (1062/11792)Updating files:  10% (1180/11792)Updating files:  10% (1206/11792)Updating files:  11% (1298/11792)Updating files:  11% (1407/11792)Updating files:  12% (1416/11792)Updating files:  13% (1533/11792)Updating files:  13% (1551/11792)Updating files:  14% (1651/11792)Updating files:  14% (1666/11792)Updating files:  15% (1769/11792)Updating files:  15% (1786/11792)Updating files:  16% (1887/11792)Updating files:  16% (1904/11792)Updating files:  17% (2005/11792)Updating files:  17% (2025/11792)Updating files:  18% (2123/11792)Updating files:  18% (2138/11792)Updating files:  19% (2241/11792)Updating files:  19% (2253/11792)Updating files:  20% (2359/11792)Updating files:  20% (2372/11792)Updating files:  21% (2477/11792)Updating files:  21% (2487/11792)Updating files:  22% (2595/11792)Updating files:  22% (2598/11792)Updating files:  22% (2705/11792)Updating files:  23% (2713/11792)Updating files:  23% (2794/11792)Updating files:  24% (2831/11792)Updating files:  24% (2894/11792)Updating files:  25% (2948/11792)Updating files:  25% (3043/11792)Updating files:  26% (3066/11792)Updating files:  27% (3184/11792)Updating files:  27% (3208/11792)Updating files:  28% (3302/11792)Updating files:  28% (3363/11792)Updating files:  29% (3420/11792)Updating files:  29% (3533/11792)Updating files:  30% (3538/11792)Updating files:  31% (3656/11792)Updating files:  31% (3697/11792)Updating files:  32% (3774/11792)Updating files:  32% (3866/11792)Updating files:  33% (3892/11792)Updating files:  34% (4010/11792)Updating files:  34% (4024/11792)Updating files:  35% (4128/11792)Updating files:  35% (4193/11792)Updating files:  36% (4246/11792)Updating files:  37% (4364/11792)Updating files:  37% (4366/11792)Updating files:  38% (4481/11792)Updating files:  38% (4522/11792)Updating files:  39% (4599/11792)Updating files:  39% (4664/11792)Updating files:  40% (4717/11792)Updating files:  40% (4824/11792)Updating files:  41% (4835/11792)Updating files:  42% (4953/11792)Updating files:  42% (4999/11792)Updating files:  43% (5071/11792)Updating files:  43% (5157/11792)Updating files:  44% (5189/11792)Updating files:  45% (5307/11792)Updating files:  45% (5319/11792)Updating files:  46% (5425/11792)Updating files:  46% (5489/11792)Updating files:  47% (5543/11792)Updating files:  47% (5658/11792)Updating files:  48% (5661/11792)Updating files:  49% (5779/11792)Updating files:  49% (5834/11792)Updating files:  50% (5896/11792)Updating files:  50% (6000/11792)Updating files:  51% (6014/11792)Updating files:  52% (6132/11792)Updating files:  52% (6156/11792)Updating files:  53% (6250/11792)Updating files:  53% (6321/11792)Updating files:  54% (6368/11792)Updating files:  55% (6486/11792)Updating files:  55% (6496/11792)Updating files:  56% (6604/11792)Updating files:  56% (6668/11792)Updating files:  57% (6722/11792)Updating files:  57% (6826/11792)Updating files:  58% (6840/11792)Updating files:  59% (6958/11792)Updating files:  59% (6997/11792)Updating files:  60% (7076/11792)Updating files:  60% (7170/11792)Updating files:  61% (7194/11792)Updating files:  62% (7312/11792)Updating files:  62% (7338/11792)Updating files:  63% (7429/11792)Updating files:  63% (7496/11792)Updating files:  64% (7547/11792)Updating files:  64% (7655/11792)Updating files:  65% (7665/11792)Updating files:  66% (7783/11792)Updating files:  66% (7826/11792)Updating files:  67% (7901/11792)Updating files:  67% (8001/11792)Updating files:  68% (8019/11792)Updating files:  69% (8137/11792)Updating files:  69% (8172/11792)Updating files:  70% (8255/11792)Updating files:  70% (8347/11792)Updating files:  71% (8373/11792)Updating files:  71% (8462/11792)Updating files:  72% (8491/11792)Updating files:  72% (8564/11792)Updating files:  73% (8609/11792)Updating files:  73% (8677/11792)Updating files:  74% (8727/11792)Updating files:  74% (8792/11792)Updating files:  75% (8844/11792)Updating files:  75% (8901/11792)Updating files:  76% (8962/11792)Updating files:  76% (8990/11792)Updating files:  77% (9080/11792)Updating files:  77% (9090/11792)Updating files:  77% (9195/11792)Updating files:  78% (9198/11792)Updating files:  78% (9310/11792)Updating files:  79% (9316/11792)Updating files:  79% (9419/11792)Updating files:  80% (9434/11792)Updating files:  80% (9504/11792)Updating files:  81% (9552/11792)Updating files:  81% (9611/11792)Updating files:  82% (9670/11792)Updating files:  82% (9709/11792)Updating files:  82% (9781/11792)Updating files:  83% (9788/11792)Updating files:  83% (9808/11792)Updating files:  83% (9897/11792)Updating files:  84% (9906/11792)Updating files:  84% (9967/11792)Updating files:  85% (10024/11792)Updating files:  85% (10066/11792)Updating files:  85% (10137/11792)Updating files:  86% (10142/11792)Updating files:  86% (10223/11792)Updating files:  87% (10260/11792)Updating files:  87% (10318/11792)Updating files:  88% (10377/11792)Updating files:  88% (10430/11792)Updating files:  89% (10495/11792)Updating files:  89% (10515/11792)Updating files:  89% (10593/11792)Updating files:  90% (10613/11792)Updating files:  90% (10688/11792)Updating files:  91% (10731/11792)Updating files:  91% (10775/11792)Updating files:  92% (10849/11792)Updating files:  92% (10860/11792)Updating files:  93% (10967/11792)Updating files:  93% (10972/11792)Updating files:  93% (11053/11792)Updating files:  94% (11085/11792)Updating files:  94% (11146/11792)Updating files:  95% (11203/11792)Updating files:  95% (11241/11792)Updating files:  96% (11321/11792)Updating files:  96% (11324/11792)Updating files:  96% (11427/11792)Updating files:  97% (11439/11792)Updating files:  97% (11519/11792)Updating files:  98% (11557/11792)Updating files:  98% (11613/11792)Updating files:  99% (11675/11792)Updating files:  99% (11713/11792)Updating files: 100% (11792/11792)Updating files: 100% (11792/11792), done.
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git statt[Kus
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mlibgit2/[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mlibgit2/[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ ls
+[0m[34;42mlibgit2[0m  [01;32mmy_first_file[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ nano my_secibd[K[K[Kond_file.txt
+[?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;55H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 4.8                                       my_second_file.txt                                                 [1;119H(B[m[29d(B[0;7m^G(B[m Get Help    (B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut Text    (B[0;7m^J(B[m Justify     (B[0;7m^C(B[m Cur Pos     (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Mark Text[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste Text  (B[0;7m^T(B[m To Spell    (B[0;7m^_(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy Text[28d[2d[39;49m(B[m[?12l[?25h[?25l[1;111H(B[0;7mModified(B[m[2ds[?12l[?25h[?25le[?12l[?25h[?25lc[?12l[?25h[?25lo[?12l[?25h[?25ln[?12l[?25h[?25ld[?12l[?25h[?25l [?12l[?25h[?25lf[?12l[?25h[?25li[?12l[?25h[?25ll[?12l[?25h[?25le[?12l[?25h[?25l [?12l[?25h[?25lf[?12l[?25h[?25lo[?12l[?25h[?25lr[?12l[?25h[?25l [?12l[?25h[?25lg[?12l[?25h[?25li[?12l[?25h[?25lt[?12l[?25h[?25l [?12l[?25h[?25ll[?12l[?25h[?25le[?12l[?25h[?25ls[?12l[?25h[?25ls[?12l[?25h[?25lo[?12l[?25h[?25ln[28d[K[2;27H[?12l[?25h[?25l[29;16H[15X[29;31H(B[0;7mM-D(B[m DOS Format[16X[29;61H(B[0;7mM-A(B[m Append[15X[29;93H(B[0;7mB(B[m Backup File[K[30;2H(B[0;7mC(B[m Cancel[16G[15X[30;31H(B[0;7mM-M(B[m Mac Format[16X[30;61H(B[0;7mM-P(B[m Prepend[19X[30;91H(B[0;7m^T(B[m To Files[K[28d(B[0;7mFile Name to Write: my_second_file.txt                                                                                  [28;1H(B[m[28;39H[?12l[?25h[?25l[28;53H[1K (B[0;7m[ Writing... ](B[m[K[1;111H(B[0;7m        (B[m[28;53H(B[0;7m[ Wrote 1 line ](B[m[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut Text    (B[0;7m^J(B[m Justify     (B[0;7m^C(B[m Cur Pos[93G(B[0;7mU(B[m Undo       (B[0;7mM-A(B[m Mark Text[30;2H(B[0;7mX(B[m Exit  [16G(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste Text  (B[0;7m^T(B[m To Spell    (B[0;7m^_(B[m Go To Line  (B[0;7mM-E(B[m Redo       (B[0;7mM-6(B[m Copy Text[28d[2;27H[?12l[?25h[?25l[28d[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git add my_second_file.txt 
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mnew file:   my_second_file.txt[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mlibgit2/[m
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ nano my_first_file 
+[?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;54H(B[0;7m[ Reading... ](B[m[28;53H(B[0;7m[ Read 1 line ](B[m[H(B[0;7m  GNU nano 4.8                                         my_first_file                                                    [1;119H(B[m[29d(B[0;7m^G(B[m Get Help    (B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut Text    (B[0;7m^J(B[m Justify     (B[0;7m^C(B[m Cur Pos     (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Mark Text[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste Text  (B[0;7m^T(B[m To Spell    (B[0;7m^_(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy Text[28d[2d[39;49m(B[mThis is my first dummy file that I want to commit[?12l[?25h[?25l[3d[?12l[?25h[?25l[?12l[?25h[?25l[1;111H(B[0;7mModified(B[m[3dM[?12l[?25h[?25la[?12l[?25h[?25lk[?12l[?25h[?25li[?12l[?25h[?25ln[?12l[?25h[?25lg[?12l[?25h[?25l [?12l[?25h[?25ls[?12l[?25h[?25lo[?12l[?25h[?25lm[?12l[?25h[?25le[?12l[?25h[?25l [?12l[?25h[?25lc[?12l[?25h[?25lh[?12l[?25h[?25la[?12l[?25h[?25ln[?12l[?25h[?25lg[?12l[?25h[?25le[?12l[?25h[?25l[29;16H[15X[29;31H(B[0;7mM-D(B[m DOS Format[16X[29;61H(B[0;7mM-A(B[m Append[15X[29;93H(B[0;7mB(B[m Backup File[K[30;2H(B[0;7mC(B[m Cancel[16G[15X[30;31H(B[0;7mM-M(B[m Mac Format[16X[30;61H(B[0;7mM-P(B[m Prepend[19X[30;91H(B[0;7m^T(B[m To Files[K[28d(B[0;7mFile Name to Write: my_first_file                                                                                       [28;1H(B[m[28;34H[?12l[?25h[?25l[28;53H[1K (B[0;7m[ Writing... ](B[m[K[1;111H(B[0;7m        (B[m[28;52H(B[0;7m[ Wrote 2 lines ](B[m[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut Text    (B[0;7m^J(B[m Justify     (B[0;7m^C(B[m Cur Pos[93G(B[0;7mU(B[m Undo       (B[0;7mM-A(B[m Mark Text[30;2H(B[0;7mX(B[m Exit  [16G(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste Text  (B[0;7m^T(B[m To Spell    (B[0;7m^_(B[m Go To Line  (B[0;7mM-E(B[m Redo       (B[0;7mM-6(B[m Copy Text[28d[3;19H[?12l[?25h[?25l[28d[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ 
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mnew file:   my_second_file.txt[m
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   my_first_file[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mlibgit2/[m
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git add my_d[Kfirst_file 
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git t=str[K[K[K[K[Kstatus 
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mmodified:   my_first_file[m
+	[32mnew file:   my_second_file.txt[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mlibgit2/[m
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ cat .gitignire
+cat: .gitignire: No such file or directory
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ cat .gitignire=[K[K[K[Kore
+cat: .gitignore: No such file or directory
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ cat .gitin[Kgnore
+cat: .gitignore: No such file or directory
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ toc[Kuch .gitignore
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ ls
+[0m[34;42mlibgit2[0m  [01;32mmy_first_file[0m  [01;32mmy_second_file.txt[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ nao[Kno .gitignore
+[?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;54H(B[0;7m[ Reading... ](B[m[28;53H(B[0;7m[ Read 0 lines ](B[m[H(B[0;7m  GNU nano 4.8                                           .gitignore                                                     [1;119H(B[m[29d(B[0;7m^G(B[m Get Help    (B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut Text    (B[0;7m^J(B[m Justify     (B[0;7m^C(B[m Cur Pos     (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Mark Text[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste Text  (B[0;7m^T(B[m To Spell    (B[0;7m^_(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy Text[28d[2d[39;49m(B[m[?12l[?25h[?25l[28d[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ ls
+[0m[34;42mlibgit2[0m  [01;32mmy_first_file[0m  [01;32mmy_second_file.txt[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ ls -a
+[0m[34;42m.[0m  [34;42m..[0m  [34;42m.git[0m  [01;32m.gitignore[0m  [34;42mlibgit2[0m  [01;32mmy_first_file[0m  [01;32mmy_second_file.txt[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ nano .got[K[Kot[K[Kitignore
+[?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;54H(B[0;7m[ Reading... ](B[m[28;53H(B[0;7m[ Read 0 lines ](B[m[H(B[0;7m  GNU nano 4.8                                           .gitignore                                                     [1;119H(B[m[29d(B[0;7m^G(B[m Get Help    (B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut Text    (B[0;7m^J(B[m Justify     (B[0;7m^C(B[m Cur Pos     (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Mark Text[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste Text  (B[0;7m^T(B[m To Spell    (B[0;7m^_(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy Text[28d[2d[39;49m(B[m[?12l[?25h[?25l[1;111H(B[0;7mModified(B[m[2d*[?12l[?25h[?25l3[?12l[?25h[?25l.[?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25l.[?12l[?25h[?25l[[?12l[?25h[?25lo[?12l[?25h[?25la[?12l[?25h[?25l][?12l[?25h[?25l[3d[?12l[?25h[?25l*[?12l[?25h[?25l~[?12l[?25h[?25l[29;16H[15X[29;31H(B[0;7mM-D(B[m DOS Format[16X[29;61H(B[0;7mM-A(B[m Append[15X[29;93H(B[0;7mB(B[m Backup File[K[30;2H(B[0;7mC(B[m Cancel[16G[15X[30;31H(B[0;7mM-M(B[m Mac Format[16X[30;61H(B[0;7mM-P(B[m Prepend[19X[30;91H(B[0;7m^T(B[m To Files[K[28d(B[0;7mFile Name to Write: .gitignore                                                                                          [28;1H(B[m[28;31H[?12l[?25h[?25l[28;53H[1K (B[0;7m[ Writing... ](B[m[K[1;111H(B[0;7m        (B[m[28;52H(B[0;7m[ Wrote 2 lines ](B[m[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut Text    (B[0;7m^J(B[m Justify     (B[0;7m^C(B[m Cur Pos[93G(B[0;7mU(B[m Undo       (B[0;7mM-A(B[m Mark Text[30;2H(B[0;7mX(B[m Exit  [16G(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste Text  (B[0;7m^T(B[m To Spell    (B[0;7m^_(B[m Go To Line  (B[0;7mM-E(B[m Redo       (B[0;7mM-6(B[m Copy Text[28d[3d*~[?12l[?25h[?25l[28d[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git diff
+[?1h=[K[?1l>(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ gt [K[Kot status
+
+Command 'got' not found, but there are 17 similar ones.
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mmodified:   my_first_file[m
+	[32mnew file:   my_second_file.txt[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m.gitignore[m
+	[31mlibgit2/[m
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git diff
+[?1h=[K[?1l>(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git diff --staged
+[?1h=[1mdiff --git a/my_first_file b/my_first_file[m[m
+[1mindex 6a86899..083367e 100644[m[m
+[1m--- a/my_first_file[m[m
+[1m+++ b/my_first_file[m[m
+[36m@@ -1 +1,2 @@[m[m
+ This is my first dummy file that I want to commit[m[m
+[32m+[m[32mMaking some change[m[m
+[1mdiff --git a/my_second_file.txt b/my_second_file.txt[m[m
+[1mnew file mode 100644[m[m
+[1mindex 0000000..3434067[m[m
+[1m--- /dev/null[m[m
+[1m+++ b/my_second_file.txt[m[m
+[36m@@ -0,0 +1 @@[m[m
+[32m+[m[32msecond file for git lesson[m[m
+[K[?1l>(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git diff --cached
+[?1h=[1mdiff --git a/my_first_file b/my_first_file[m[m
+[1mindex 6a86899..083367e 100644[m[m
+[1m--- a/my_first_file[m[m
+[1m+++ b/my_first_file[m[m
+[36m@@ -1 +1,2 @@[m[m
+ This is my first dummy file that I want to commit[m[m
+[32m+[m[32mMaking some change[m[m
+[1mdiff --git a/my_second_file.txt b/my_second_file.txt[m[m
+[1mnew file mode 100644[m[m
+[1mindex 0000000..3434067[m[m
+[1m--- /dev/null[m[m
+[1m+++ b/my_second_file.txt[m[m
+[36m@@ -0,0 +1 @@[m[m
+[32m+[m[32msecond file for git lesson[m[m
+[K[?1l>(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git commo[Kit
+hint: Waiting for your editor to close the file... error: cannot run nano-w: No such file or directory
+error: unable to start editor 'nano-w'
+Please supply the message using either -m or -F option.
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git commmi[K[Kit -m "Making my secn[Kond edit"
+[master ad12ca2] Making my second edit
+ 2 files changed, 2 insertions(+)
+ create mode 100644 my_second_file.txt
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git rm sec[K[K[Kmy_second_file.txt 
+rm 'my_second_file.txt'
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mdeleted:    my_second_file.txt[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m.gitignore[m
+	[31mlibgit2/[m
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git restore --staged my_second_file.txt
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git sra[K[Ktatus
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mdeleted:    my_second_file.txt[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m.gitignore[m
+	[31mlibgit2/[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git commo[Kit -a
+hint: Waiting for your editor to close the file... error: cannot run nano-w: No such file or directory
+error: unable to start editor 'nano-w'
+Please supply the message using either -m or -F option.
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git commit -a 'new comi[Kmiut[K[Kt'
+fatal: paths 'new commit ...' with -a does not make sense
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git commit -a 'new commit'[1@-[1@m[1@ 
+[master 9d12e50] new commit
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 my_second_file.txt
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ ls
+[0m[34;42mlibgit2[0m  [01;32mmy_first_file[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ g[Kit [K[K[Kgit mv my_first_file first_file
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ ls
+[0m[01;32mfirst_file[0m  [34;42mlibgit2[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mrenamed:    my_first_file -> first_file[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m.gitignore[m
+	[31mlibgit2/[m
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git log
+[?1h=[33mcommit 9d12e50fb6f967e082d2329fd606442c37cf3bf2[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m[m
+Author: Radhika Mirani <radhika.mirani@tigeranalytics.com>[m
+Date:   Tue Jul 18 20:39:05 2023 +0530[m
+[m
+    new commit[m
+[m
+[33mcommit ad12ca2afdc78fc06745cf26a24bd3dfa695d329[m[m
+Author: Radhika Mirani <radhika.mirani@tigeranalytics.com>[m
+Date:   Tue Jul 18 20:34:03 2023 +0530[m
+[m
+    Making my second edit[m
+[m
+[33mcommit a0d23cca31f834bac4fa640ae79e807b46f4d759[m[m
+Author: Radhika Mirani <radhika.mirani@tigeranalytics.com>[m
+Date:   Tue Jul 18 19:53:13 2023 +0530[m
+[m
+    Initial Project Version[m
+[K[?1l>(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git log pretty[K[K[K[K[K[K-pre[K[K[K[K--pretty=oneline
+[?1h=[33m9d12e50fb6f967e082d2329fd606442c37cf3bf2[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m new commit[m
+[33mad12ca2afdc78fc06745cf26a24bd3dfa695d329[m Making my second edit[m
+[33ma0d23cca31f834bac4fa640ae79e807b46f4d759[m Initial Project Version[m
+[K[?1l>(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git log --pretty=oneline[K[K[K[K[K[K[K[K
+[?1h=[33mcommit 9d12e50fb6f967e082d2329fd606442c37cf3bf2[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m[m
+Author: Radhika Mirani <radhika.mirani@tigeranalytics.com>[m
+Date:   Tue Jul 18 20:39:05 2023 +0530[m
+[m
+    new commit[m
+[m
+[33mcommit ad12ca2afdc78fc06745cf26a24bd3dfa695d329[m[m
+Author: Radhika Mirani <radhika.mirani@tigeranalytics.com>[m
+Date:   Tue Jul 18 20:34:03 2023 +0530[m
+[m
+    Making my second edit[m
+[m
+[33mcommit a0d23cca31f834bac4fa640ae79e807b46f4d759[m[m
+Author: Radhika Mirani <radhika.mirani@tigeranalytics.com>[m
+Date:   Tue Jul 18 19:53:13 2023 +0530[m
+[m
+    Initial Project Version[m
+[K[?1l>(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git log --pretty=format:"%h - %an, %ar : %s"
+[?1h=9d12e50 - Radhika Mirani, 24 hours ago : new commit[m
+ad12ca2 - Radhika Mirani, 24 hours ago : Making my second edit[m
+a0d23cc - Radhika Mirani, 24 hours ago : Initial Project Version[m
+[K[?1l>(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git log --graph
+[?1h=* [33mcommit 9d12e50fb6f967e082d2329fd606442c37cf3bf2[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m[m
+[31m|[m Author: Radhika Mirani <radhika.mirani@tigeranalytics.com>[m
+[31m|[m Date:   Tue Jul 18 20:39:05 2023 +0530[m
+[31m|[m [m
+[31m|[m     new commit[m
+[31m|[m [m
+* [33mcommit ad12ca2afdc78fc06745cf26a24bd3dfa695d329[m[m
+[31m|[m Author: Radhika Mirani <radhika.mirani@tigeranalytics.com>[m
+[31m|[m Date:   Tue Jul 18 20:34:03 2023 +0530[m
+[31m|[m [m
+[31m|[m     Making my second edit[m
+[31m|[m [m
+* [33mcommit a0d23cca31f834bac4fa640ae79e807b46f4d759[m[m
+  Author: Radhika Mirani <radhika.mirani@tigeranalytics.com>[m
+  Date:   Tue Jul 18 19:53:13 2023 +0530[m
+  [m
+      Initial Project Version[m
+[K[?1l>(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mrenamed:    my_first_file -> first_file[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m.gitignore[m
+	[31mlibgit2/[m
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git add *
+warning: adding embedded git repository: libgit2
+[33mhint: You've added another git repository inside your current repository.[m
+[33mhint: Clones of the outer repository will not contain the contents of[m
+[33mhint: the embedded repository and will not know how to obtain it.[m
+[33mhint: If you meant to add a submodule, use:[m
+[33mhint: [m
+[33mhint: 	git submodule add <url> libgit2[m
+[33mhint: [m
+[33mhint: If you added this path by mistake, you can remove it from the[m
+[33mhint: index with:[m
+[33mhint: [m
+[33mhint: 	git rm --cached libgit2[m
+[33mhint: [m
+[33mhint: See "git help submodule" for more information.[m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mrenamed:    my_first_file -> first_file[m
+	[32mnew file:   libgit2[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m.gitignore[m
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ gi [Kt restire [K[K[K[Kore --staged libgit2
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mrenamed:    my_first_file -> first_file[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m.gitignore[m
+	[31mlibgit2/[m
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git in
+init       instaweb   
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git info
+git: 'info' is not a git command. See 'git --help'.
+
+The most similar commands are
+	init
+	mailinfo
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ got[K[Kit --help
+usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone             Clone a repository into a new directory
+   init              Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add               Add file contents to the index
+   mv                Move or rename a file, a directory, or a symlink
+   restore           Restore working tree files
+   rm                Remove files from the working tree and from the index
+   sparse-checkout   Initialize and modify the sparse-checkout
+
+examine the history and state (see also: git help revisions)
+   bisect            Use binary search to find the commit that introduced a bug
+   diff              Show changes between commits, commit and working tree, etc
+   grep              Print lines matching a pattern
+   log               Show commit logs
+   show              Show various types of objects
+   status            Show the working tree status
+
+grow, mark and tweak your common history
+   branch            List, create, or delete branches
+   commit            Record changes to the repository
+   merge             Join two or more development histories together
+   rebase            Reapply commits on top of another base tip
+   reset             Reset current HEAD to the specified state
+   switch            Switch branches
+   tag               Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch             Download objects and refs from another repository
+   pull              Fetch from and integrate with another repository or a local branch
+   push              Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git -con[K[K[K[Kconfig --list
+[?1h=user.name=Radhika Mirani[m
+user.email=radhika.mirani@tigeranalytics.com[m
+core.editor=nano-w[m
+init.defaultbranch=main[m
+alias.unstage=reset HEAD --[m
+alias.last=log -1 HEAD[m
+core.repositoryformatversion=0[m
+core.filemode=false[m
+core.bare=false[m
+core.logallrefupdates=true[m
+core.ignorecase=true[m
+[K[?1l>(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git remote
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ git remi[Kote -v
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ s[Kls
+[0m[01;32mfirst_file[0m  [34;42mlibgit2[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ d[Kcd libgit2/
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo/libgit2[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo/libgit2[00m$ git remote
+origin
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo/libgit2[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo/libgit2[00m$ cd ...[K
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson/my_git_repo[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson/my_git_repo[00m$ cd..[K[K ..
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/Git_lesson[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/Git_lesson[00m$ cd ..
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP[00m$ mkdir git[K[K[Kmle_training_git [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kcd my_git[K[K[K[K[K[KGit_lesson/[K[K[K[K[K[K[K[K[K[K[K[K[K[Kmkdir mle_training_git
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP[00m$ cs[Kd mle_training_git/
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ ls
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ git fetch remote https://github.com/Radhika-TA/MLE-training-assignments[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CThttps://github.com/Radhika-TA/MLE-training-assignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CAhttps://github.com/Radhika-TA/MLE-training-a[Csignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CMhttps://github.com/Radhika-TA/MLE-training-assignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CLhttps://github.com/Radhika-TA/MLE-training-assignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CEhttps://github.com/Radhika-TA/MLE-training-assignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CPhttps://github.com/Radhika-TA/MLE-training-assignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C https://github.com/Radhika-TA/MLE-training-assignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ git fetch remote TAMLEP https://github.com/Radhika-TA/MLE-training-assignments[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C remote TAMLEP https://github.com/Radhika-TA/MLE-traini[1Png-assignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C[C[C[C remote TAMLEP https://github.com/Radhika-TA/MLE-trainin[1Pg-assignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C[C[C remote TAMLEP https://github.com/Radhika-TA/MLE-training[1P-assignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C[C remote TAMLEP https://github.com/Radhika-TA/MLE-training-[1Passignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C remote TAMLEP https://github.com/Radhika-TA/MLE-training-a[1Pssignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[Cremote TAMLEP https://github.com/Radhika-TA/MLE-training-as[C[1Pignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C[C[C[C[C[C[C TAMLEP https://github.com/Radhika-TA/MLE-training-a[Csignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C[C[C[C[C[C[Ca TAMLEP https://github.com/Radhika-TA/MLE-training-assignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C[C[C[C[C[C[C[Cd TAMLEP https://github.com/Radhika-TA/MLE-training-assignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[Cd TAMLEP https://github.com/Radhika-TA/MLE-training-assignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ git cln[Kine[K[K[Kone https://github.com/Radhika-TA/MLE-training-assignments
+Cloning into 'MLE-training-assignments'...
+Username for 'https://github.com': Radhika       Radhika Mirani
+Password for 'https://Radhika Mirani@github.com': 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/Radhika-TA/MLE-training-assignments/'
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ git clone https://github.com/Radhika-TA/MLE-training-assignments[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kgit remote add TAMLEP https://github.com/Radhika-TA/MLE-training-assignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[Cfetch remote TAMLEP https://github.com/Radhika-TA/MLE-training-assignments[A(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ [C[C[C[Cremote add TAMLEP https://github.com/Radhika-TA/MLE-trainin[2Pg-assignments
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ git remote
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ git clone https://github.com/Radhika-TA/MLE-training-assignments
+Cloning into 'MLE-training-assignments'...
+Username for 'https://github.com': Radhika-TA
+Password for 'https://Radhika-TA@github.com': 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/Radhika-TA/MLE-training-assignments/'
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ git clone https://github.com/Radhika-TA/MLE-training-assignments
+Cloning into 'MLE-training-assignments'...
+Username for 'https://github.com': Radhika-TA
+Password for 'https://Radhika-TA@github.com': 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/Radhika-TA/MLE-training-assignments/'
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ git clone https://github.com/Radhika-TA/MLE-training-assignments
+Cloning into 'MLE-training-assignments'...
+fatal: unable to access 'https://github.com/Radhika-TA/MLE-training-assignments/': Could not resolve host: github.com
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ git clone https://github.com/Radhika-TA/MLE-training-assignments
+Cloning into 'MLE-training-assignments'...
+fatal: unable to access 'https://github.com/Radhika-TA/MLE-training-assignments/': Could not resolve host: github.com
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ git clone https://github.com/Radhika-TA/MLE-training-assignments
+Cloning into 'MLE-training-assignments'...
+fatal: unable to access 'https://github.com/Radhika-TA/MLE-training-assignments/': Could not resolve host: github.com
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ git clone https://github.com/Radhika-TA/MLE-training-assignments
+Cloning into 'MLE-training-assignments'...
+Username for 'https://github.com': Radhika-TA
+Password for 'https://Radhika-TA@github.com': 
+remote: Write access to repository not granted.
+fatal: unable to access 'https://github.com/Radhika-TA/MLE-training-assignments/': The requested URL returned error: 403
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ git clone https://github.com/Radhika-TA/MLE-training-assignments
+Cloning into 'MLE-training-assignments'...
+Username for 'https://github.com': Radhika-TA
+Password for 'https://Radhika-TA@github.com': 
+remote: Write access to repository not granted.
+fatal: unable to access 'https://github.com/Radhika-TA/MLE-training-assignments/': The requested URL returned error: 403
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ git clone https://github.com/Radhika-TA/MLE-training-assignments
+Cloning into 'MLE-training-assignments'...
+Username for 'https://github.com': Radhika-TA
+Password for 'https://Radhika-TA@github.com': 
+remote: Enumerating objects: 3, done.[K
+remote: Counting objects:  33% (1/3)[Kremote: Counting objects:  66% (2/3)[Kremote: Counting objects: 100% (3/3)[Kremote: Counting objects: 100% (3/3), done.[K
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0[K
+Unpacking objects:  33% (1/3)Unpacking objects:  66% (2/3)Unpacking objects: 100% (3/3)Unpacking objects: 100% (3/3), 626 bytes | 44.00 KiB/s, done.
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ git status
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ ls
+[0m[34;42mMLE-training-assignments[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ cd m[KMLE-training-assignments/
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ ls
+[0m[01;32mREADME.md[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ mkdir Assignment 1[K[K-1
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ ls
+[0m[34;42mAssignment-1[0m  [01;32mREADME.md[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ cd Assignment-1[1P[1P Assignment-1[1PAssignment-1[1Pssignment-1[C[1Pignment-1[1Pignment-1[1Pgnment-1[1Pnment-1[1Pment-1[1Pent-1[1Pnt-1[1Pt-1[1P-1[1P1[Kcd ..
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ cd ..
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP[00m$ ls
+[0m[34;42m'ASSIGNMENT 1'[0m   [34;42mGit_lesson[0m   [01;32mgit_session[0m   [34;42mmle_training_git[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP[00m$ cd ASSIGNMENT\ 1/
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/ASSIGNMENT 1[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/ASSIGNMENT 1[00m$ ls
+[0m[34;42m'Assignment 1'[0m   [34;42mSolutions[0m   [34;42mshell-lesson-data[0m   [01;32mshell-lesson-data.zip[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/ASSIGNMENT 1[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/ASSIGNMENT 1[00m$ cd Solutions/
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/ASSIGNMENT 1/Solutions[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/ASSIGNMENT 1/Solutions[00m$ ls
+my_unix_session
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/ASSIGNMENT 1/Solutions[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/ASSIGNMENT 1/Solutions[00m$ mv my_unix_session ..//../[K[K[K[K../../ml[K[K[K[K[Kmle_training_git/MLE-training-assignments/Assignment-1/
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/ASSIGNMENT 1/Solutions[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/ASSIGNMENT 1/Solutions[00m$ cd `
+> 
+> ^C
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/ASSIGNMENT 1/Solutions[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/ASSIGNMENT 1/Solutions[00m$ 
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/ASSIGNMENT 1/Solutions[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/ASSIGNMENT 1/Solutions[00m$ cd -
+/mnt/d/TAMLEP/ASSIGNMENT 1
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/ASSIGNMENT 1[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/ASSIGNMENT 1[00m$ cc[K[Kcd ../
+ASSIGNMENT 1/     Git_lesson/       mle_training_git/ 
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/ASSIGNMENT 1[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/ASSIGNMENT 1[00m$ cd ../
+ASSIGNMENT 1/     Git_lesson/       mle_training_git/ 
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/ASSIGNMENT 1[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/ASSIGNMENT 1[00m$ cd ../mle_training_git/MLE-training-assignments/Assignment-1/
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[00m$ ls
+my_unix_session
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[00m$ cd ..
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ ls
+[0m[34;42mAssignment-1[0m  [01;32mREADME.md[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mAssignment-1/[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git add *
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ 
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git t[Kstatus
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mnew file:   Assignment-1/my_unix_session[m
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git commit -m "Sum[Kbmitting unix assign [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[Krecord ing for assignment 1"
+[main 2e08b88] Submitting unix recording for assignment 1
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 Assignment-1/my_unix_session
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git push
+Username for 'https://github.com': Radhika-TA
+Password for 'https://Radhika-TA@github.com': 
+Enumerating objects: 5, done.
+Counting objects:  20% (1/5)Counting objects:  40% (2/5)Counting objects:  60% (3/5)Counting objects:  80% (4/5)Counting objects: 100% (5/5)Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects:  50% (1/2)Compressing objects: 100% (2/2)Compressing objects: 100% (2/2), done.
+Writing objects:  25% (1/4)Writing objects:  50% (2/4)Writing objects:  75% (3/4)Writing objects:  75% (3/4), 3.38 MiB | 2.93 MiB/sWriting objects:  75% (3/4), 7.38 MiB | 3.22 MiB/sWriting objects:  75% (3/4), 11.69 MiB | 3.40 MiB/sWriting objects:  75% (3/4), 16.20 MiB | 3.65 MiB/sWriting objects:  75% (3/4), 20.02 MiB | 3.93 MiB/sWriting objects:  75% (3/4), 22.58 MiB | 3.96 MiB/sWriting objects:  75% (3/4), 27.58 MiB | 4.20 MiB/sWriting objects:  75% (3/4), 33.41 MiB | 4.65 MiB/sWriting objects:  75% (3/4), 37.85 MiB | 4.57 MiB/sWriting objects:  75% (3/4), 42.54 MiB | 4.76 MiB/sWriting objects: 100% (4/4), 42.54 MiB | 4.76 MiB/sWriting objects: 100% (4/4), 43.51 MiB | 4.20 MiB/s, done.
+Total 4 (delta 0), reused 1 (delta 0)
+remote: [1;31merror[m: Trace: b8fa12ee7cf11a11aef8b0a2ee750b8f838baa8acb9a0b78e3ed91866d1becb1[K
+remote: [1;31merror[m: See https://gh.io/lfs for more information.[K
+remote: [1;31merror[m: File Assignment-1/my_unix_session is 1320.99 MB; this exceeds GitHub's file size limit of 100.00 MB[K
+remote: [1;31merror[m: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.[K
+To https://github.com/Radhika-TA/MLE-training-assignments
+ [31m! [remote rejected][m main -> main (pre-receive hook declined)
+[31merror: failed to push some refs to 'https://github.com/Radhika-TA/MLE-training-assignments'
+[m(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   Assignment-1/my_unix_session[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mAssignment-1/my_unix_session.zip[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git [K[K[K[Kgit status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mdeleted:    Assignment-1/my_unix_session[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mAssignment-1/my_unix_session.zip[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git rm Assignment-1/MY[K[Kmu[Ky_unix_session 
+rm 'Assignment-1/my_unix_session'
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mdeleted:    Assignment-1/my_unix_session[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mAssignment-1/[m
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git restore --staged Assignment-1/my_ unix_session.zip[K[K[K[K
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mdeleted:    Assignment-1/my_unix_session[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mAssignment-1/my_unix_session.zip[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ gi [Kt add Assignment-1/my_unix_session. zip 
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mnew file:   Assignment-1/my_unix_session.zip[m
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mdeleted:    Assignment-1/my_unix_session[m
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git commit -m "Assignment 1.1"
+[main 6f7596d] Assignment 1.1
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 Assignment-1/my_unix_session.zip
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git push
+Username for 'https://github.com': Radhika-TA
+Password for 'https://Radhika-TA@github.com': 
+Enumerating objects: 9, done.
+Counting objects:  11% (1/9)Counting objects:  22% (2/9)Counting objects:  33% (3/9)Counting objects:  44% (4/9)Counting objects:  55% (5/9)Counting objects:  66% (6/9)Counting objects:  77% (7/9)Counting objects:  88% (8/9)Counting objects: 100% (9/9)Counting objects: 100% (9/9), done.
+Delta compression using up to 8 threads
+Compressing objects:  16% (1/6)Compressing objects:  33% (2/6)Compressing objects:  50% (3/6)Compressing objects:  66% (4/6)Compressing objects:  83% (5/6)Compressing objects: 100% (6/6)Compressing objects: 100% (6/6), done.
+Writing objects:  12% (1/8)Writing objects:  25% (2/8)Writing objects:  37% (3/8)Writing objects:  50% (4/8)Writing objects:  50% (4/8), 3.19 MiB | 2.46 MiB/sWriting objects:  50% (4/8), 7.62 MiB | 3.27 MiB/sWriting objects:  50% (4/8), 13.24 MiB | 3.96 MiB/sWriting objects:  50% (4/8), 18.88 MiB | 4.33 MiB/sWriting objects:  50% (4/8), 22.00 MiB | 4.43 MiB/sWriting objects:  50% (4/8), 24.37 MiB | 4.51 MiB/sWriting objects:  50% (4/8), 29.94 MiB | 4.78 MiB/sWriting objects:  50% (4/8), 35.47 MiB | 4.76 MiB/sWriting objects:  50% (4/8), 40.97 MiB | 4.75 MiB/sWriting objects:  62% (5/8), 40.97 MiB | 4.75 MiB/sWriting objects:  62% (5/8), 43.52 MiB | 3.59 MiB/sWriting objects:  62% (5/8), 49.04 MiB | 3.91 MiB/sWriting objects:  62% (5/8), 54.48 MiB | 3.89 MiB/sWriting objects:  75% (6/8), 54.48 MiB | 3.89 MiB/sWriting objects:  87% (7/8), 54.48 MiB | 3.89 MiB/sWriting objects: 100% (8/8), 54.48 MiB | 3.89 MiB/sWriting objects: 100% (8/8), 55.68 MiB | 4.10 MiB/s, done.
+Total 8 (delta 0), reused 1 (delta 0)
+remote: [1;31merror[m: Trace: a50a60ecc0c49255490be5134471a85062f9ed3561e50c813c3e77ac1be9598c[K
+remote: [1;31merror[m: See https://gh.io/lfs for more information.[K
+remote: [1;31merror[m: File Assignment-1/my_unix_session is 1320.99 MB; this exceeds GitHub's file size limit of 100.00 MB[K
+remote: [1;31merror[m: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.[K
+To https://github.com/Radhika-TA/MLE-training-assignments
+ [31m! [remote rejected][m main -> main (pre-receive hook declined)
+[31merror: failed to push some refs to 'https://github.com/Radhika-TA/MLE-training-assignments'
+[m(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mdeleted:    Assignment-1/my_unix_session[m
+	[31mdeleted:    Assignment-1/my_unix_session.zip[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git ads [K[Kd Assignment-1/
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mdeleted:    Assignment-1/my_unix_session[m
+	[32mdeleted:    Assignment-1/my_unix_session.zip[m
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git pu[K[Kcommit
+hint: Waiting for your editor to close the file... error: cannot run nano-w: No such file or directory
+error: unable to start editor 'nano-w'
+Please supply the message using either -m or -F option.
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git commit -m "Adding directory"
+[main 4c01a15] Adding directory
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 Assignment-1/my_unix_session
+ delete mode 100644 Assignment-1/my_unix_session.zip
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git push
+Username for 'https://github.com': Radhika-TA
+Password for 'https://Radhika-TA@github.com': 
+Enumerating objects: 10, done.
+Counting objects:  10% (1/10)Counting objects:  20% (2/10)Counting objects:  30% (3/10)Counting objects:  40% (4/10)Counting objects:  50% (5/10)Counting objects:  60% (6/10)Counting objects:  70% (7/10)Counting objects:  80% (8/10)Counting objects:  90% (9/10)Counting objects: 100% (10/10)Counting objects: 100% (10/10), done.
+Delta compression using up to 8 threads
+Compressing objects:  14% (1/7)Compressing objects:  28% (2/7)Compressing objects:  42% (3/7)Compressing objects:  57% (4/7)Compressing objects:  71% (5/7)Compressing objects:  85% (6/7)Compressing objects: 100% (7/7)Compressing objects: 100% (7/7), done.
+Writing objects:  11% (1/9)Writing objects:  22% (2/9)Writing objects:  33% (3/9)Writing objects:  44% (4/9)Writing objects:  55% (5/9)Writing objects:  55% (5/9), 3.12 MiB | 1.56 MiB/sWriting objects:  55% (5/9), 3.56 MiB | 798.00 KiB/sWriting objects:  55% (5/9), 3.69 MiB | 686.00 KiB/sWriting objects:  55% (5/9), 3.75 MiB | 639.00 KiB/sWriting objects:  55% (5/9), 4.25 MiB | 561.00 KiB/sWriting objects:  55% (5/9), 4.75 MiB | 568.00 KiB/sWriting objects:  55% (5/9), 5.31 MiB | 502.00 KiB/sWriting objects:  55% (5/9), 6.11 MiB | 381.00 KiB/sWriting objects:  55% (5/9), 8.91 MiB | 809.00 KiB/sWriting objects:  55% (5/9), 11.41 MiB | 1.21 MiB/s Writing objects:  55% (5/9), 15.22 MiB | 1.94 MiB/sWriting objects:  55% (5/9), 19.09 MiB | 2.67 MiB/sWriting objects:  55% (5/9), 23.41 MiB | 3.47 MiB/sWriting objects:  55% (5/9), 26.05 MiB | 3.64 MiB/sWriting objects:  55% (5/9), 31.67 MiB | 4.28 MiB/sWriting objects:  55% (5/9), 35.36 MiB | 4.19 MiB/sWriting objects:  55% (5/9), 41.16 MiB | 4.60 MiB/sWriting objects:  66% (6/9), 41.16 MiB | 4.60 MiB/sWriting objects:  66% (6/9), 43.52 MiB | 3.42 MiB/sWriting objects:  66% (6/9), 49.73 MiB | 3.69 MiB/sWriting objects:  77% (7/9), 52.91 MiB | 3.71 MiB/sWriting objects:  88% (8/9), 52.91 MiB | 3.71 MiB/sWriting objects: 100% (9/9), 52.91 MiB | 3.71 MiB/sWriting objects: 100% (9/9), 55.68 MiB | 2.38 MiB/s, done.
+Total 9 (delta 0), reused 1 (delta 0)
+remote: [1;31merror[m: Trace: 712d3b421111c711fa194f1c815fa5528b623365a365c72248d66ff480f8b619[K
+remote: [1;31merror[m: See https://gh.io/lfs for more information.[K
+remote: [1;31merror[m: File Assignment-1/my_unix_session is 1320.99 MB; this exceeds GitHub's file size limit of 100.00 MB[K
+remote: [1;31merror[m: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.[K
+To https://github.com/Radhika-TA/MLE-training-assignments
+ [31m! [remote rejected][m main -> main (pre-receive hook declined)
+[31merror: failed to push some refs to 'https://github.com/Radhika-TA/MLE-training-assignments'
+[m(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git co[Klone[K[K[K[K[K[K[K[K[Kgit clone https://github.com/Radhika-TA/MLE-training-assignments
+Cloning into 'MLE-training-assignments'...
+Username for 'https://github.com': Radhika-TA
+Password for 'https://Radhika-TA@github.com': 
+remote: Enumerating objects: 3, done.[K
+remote: Counting objects:  33% (1/3)[Kremote: Counting objects:  66% (2/3)[Kremote: Counting objects: 100% (3/3)[Kremote: Counting objects: 100% (3/3), done.[K
+Unpacking objects:  33% (1/3)Unpacking objects:  66% (2/3)Unpacking objects: 100% (3/3)Unpacking objects: 100% (3/3), 626 bytes | 28.00 KiB/s, done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0[K
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ ls
+[0m[34;42mMLE-training-assignments[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ cd ..
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ cd ..[3Plsgit clone https://github.com/Radhika-TA/MLE-training-assignments
+Cloning into 'MLE-training-assignments'...
+Username for 'https://github.com': Radhika-TA
+Password for 'https://Radhika-TA@github.com': 
+remote: Enumerating objects: 3, done.[K
+remote: Counting objects:  33% (1/3)[Kremote: Counting objects:  66% (2/3)[Kremote: Counting objects: 100% (3/3)[Kremote: Counting objects: 100% (3/3), done.[K
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0[K
+Unpacking objects:  33% (1/3)Unpacking objects:  66% (2/3)Unpacking objects: 100% (3/3)Unpacking objects: 100% (3/3), 626 bytes | 32.00 KiB/s, done.
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ ls
+[0m[34;42mMLE-training-assignments[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git[00m$ cd MLE-training-assignments/
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ ls
+[0m[01;32mREADME.md[0m
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ k [K[Kmkdir Assignment-1
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git -a[K[Kadd -[KAssignment-1/
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git add Assignment-1/[11Pstatus
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git commit 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ 
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ cd Assignment-1/
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[00m$ CAT [K[K[K[Kcat readme.[K.md
+cat: readme.md: No such file or directory
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[00m$ nano readme.txt
+[?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;55H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 4.8                                           readme.txt                                                     [1;119H(B[m[29d(B[0;7m^G(B[m Get Help    (B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut Text    (B[0;7m^J(B[m Justify     (B[0;7m^C(B[m Cur Pos     (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Mark Text[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste Text  (B[0;7m^T(B[m To Spell    (B[0;7m^_(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy Text[28d[2d[39;49m(B[m[?12l[?25h[?25l[1;111H(B[0;7mModified(B[m[2dT[?12l[?25h[?25lh[?12l[?25h[?25li[?12l[?25h[?25ls[?12l[?25h[?25l [?12l[?25h[?25lr[?12l[?25h[?25le[?12l[?25h[?25lp[?12l[?25h[?25lo[?12l[?25h[?25l [?12l[?25h[?25lh[?12l[?25h[?25la[?12l[?25h[?25ls[?12l[?25h[?25l [?12l[?25h[?25la[?12l[?25h[?25ls[?12l[?25h[?25ls[?12l[?25h[?25li[?12l[?25h[?25lg[?12l[?25h[?25ln[?12l[?25h[?25lm[?12l[?25h[?25le[?12l[?25h[?25ln[?12l[?25h[?25lt[?12l[?25h[?25l [?12l[?25h[?25l1[28d[K[2;27H[?12l[?25h[?25l [?12l[?25h[?25ls[?12l[?25h[?25lo[?12l[?25h[?25ll[?12l[?25h[?25lu[?12l[?25h[?25li[?12l[?25h[?25lo[?12l[?25h[?25ln[?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25lt[?12l[?25h[?25li[?12l[?25h[?25lo[?12l[?25h[?25ln[?12l[?25h[?25ls[?12l[?25h[?25l.[?12l[?25h[?25l[29;16H[15X[29;31H(B[0;7mM-D(B[m DOS Format[16X[29;61H(B[0;7mM-A(B[m Append[15X[29;93H(B[0;7mB(B[m Backup File[K[30;2H(B[0;7mC(B[m Cancel[16G[15X[30;31H(B[0;7mM-M(B[m Mac Format[16X[30;61H(B[0;7mM-P(B[m Prepend[19X[30;91H(B[0;7m^T(B[m To Files[K[28d(B[0;7mFile Name to Write: readme.txt                                                                                          [28;1H(B[m[28;31H[?12l[?25h[?25l[28;53H[1K (B[0;7m[ Writing... ](B[m[K[1;111H(B[0;7m        (B[m[28;53H(B[0;7m[ Wrote 1 line ](B[m[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut Text    (B[0;7m^J(B[m Justify     (B[0;7m^C(B[m Cur Pos[93G(B[0;7mU(B[m Undo       (B[0;7mM-A(B[m Mark Text[30;2H(B[0;7mX(B[m Exit  [16G(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste Text  (B[0;7m^T(B[m To Spell    (B[0;7m^_(B[m Go To Line  (B[0;7mM-E(B[m Redo       (B[0;7mM-6(B[m Copy Text[28d[2;38H[?12l[?25h[?25l[28d[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[00m$ 
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[00m$ nano readme.txt[2Pcat readme.mdd Assignment-1/
+bash: cd: Assignment-1/: No such file or directory
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[00m$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m./[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[00m$ git add readme.txt 
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[00m$ git add readme.txt [9Pstatus
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mnew file:   readme.txt[m
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments/Assignment-1[00m$ cd ..
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mnew file:   Assignment-1/readme.txt[m
+
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git commit
+hint: Waiting for your editor to close the file... error: cannot run nano-w: No such file or directory
+error: unable to start editor 'nano-w'
+Please supply the message using either -m or -F option.
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git commit -m "assignment 1"
+[main e1b0bed] assignment 1
+ 1 file changed, 1 insertion(+)
+ create mode 100644 Assignment-1/readme.txt
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ git push
+Username for 'https://github.com': Radhika-TA
+Password for 'https://Radhika-TA@github.com': 
+Enumerating objects: 5, done.
+Counting objects:  20% (1/5)Counting objects:  40% (2/5)Counting objects:  60% (3/5)Counting objects:  80% (4/5)Counting objects: 100% (5/5)Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects:  50% (1/2)Compressing objects: 100% (2/2)Compressing objects: 100% (2/2), done.
+Writing objects:  25% (1/4)Writing objects:  50% (2/4)Writing objects:  75% (3/4)Writing objects: 100% (4/4)Writing objects: 100% (4/4), 381 bytes | 95.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0)
+To https://github.com/Radhika-TA/MLE-training-assignments
+   14961cd..e1b0bed  main -> main
+(base) ]0;radhika@TIGER01285: /mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[01;32mradhika@TIGER01285[00m:[01;34m/mnt/d/TAMLEP/mle_training_git/MLE-training-assignments[00m$ exit
+exit
+
+Script done on 2023-07-24 12:07:03+05:30 [COMMAND_EXIT_CODE="0"]
